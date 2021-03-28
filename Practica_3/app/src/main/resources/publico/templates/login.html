@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text= "${titulo}">Document</title>
+
+    <style>
+
+        .icon
+        {
+            width: 50px;
+            height: 50px;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            padding-left: 32px;
+            padding-right: 32px;
+        }
+
+        .input_lbl 
+        {
+            font-size: 18px;
+            padding-bottom: 12px;
+            margin-bottom: 36px;
+            border: 0;
+            border-bottom: 1px solid #ccc;
+            width: 100%;
+
+
+
+        }
+
+        .input_lblp 
+        {
+            font-size: 18px;
+            padding-bottom: 12px;
+            margin-bottom: 10px;
+            border: 0;
+            border-bottom: 1px solid #ccc;
+            width: 100%;
+
+
+
+        }
+        
+        #register-form
+        {   
+            margin-left: auto;
+            margin-right: auto;
+            width: fit-content;
+            background-color: dimgray;
+            padding: 15px;
+            border-color: #ccc;
+            border-width: 1px;
+        }
+        #input_wrap 
+        {
+            padding-top: 80px;
+            padding-bottom: 40px;
+            padding-left: 80px;
+            padding-right: 80px;
+        }
+    </style>
+
+
+
+</head>
+<body>
+    <body style="background: linear-gradient(130deg, dimgray,  rgba(1,1,1,1) 93%, dimgray 65%, rgba(1,1,1,1) 93%);"> 
+        
+
+        <form id="register-form" action="/Practica_2/usuarios/login" method="post"> 
+            <h1 style="text-align: center;">Iniciar Sesión</h1>
+
+            <div style="background: linear-gradient(130deg, dimgray,  rgba(1,1,1,1) 93%, dimgray 65%, rgba(1,1,1,1) 93%); ">
+                <img class="icon"  src="http://pluspng.com/img-png/google-logo-png-open-2000.png" alt="Google Logo">
+                <img class="icon"  src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/facebook_circle-512.png" alt="Facebook Logo">
+                <img class="icon"  src="https://image.flaticon.com/icons/svg/25/25231.svg" alt="Github Logo">
+                <img class="icon"  src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/linkedin_circle-512.png" alt="LinkedinLogo">
+                
+            </div>
+            <br><br>
+        <div id="input_wrap">
+            <div> 
+                <input class="input_lbl" type="text" name="usrname" required placeholder="Username"> 
+            </div>
+
+            <div> 
+                <input class="input_lbl" type="text" name="name" required placeholder="Nombre"> 
+            </div> 
+
+            <div> 
+                <input class="input_lblp" type="password" name="password" required placeholder="Password"> 
+            </div>
+       
+            <div class="form-check">
+                <input type="checkbox" form="register-form" class="form-check-input" id="recuerdame" name="remember" value="ok">
+                <label class="form-check-label" for="recuerdame">Recuerdame</label>
+                <br><br>
+              </div>
+
+            <div>
+                <input form="register-form" type="submit" value="Login"
+                style="border: none; background-color: #0056ff;
+                padding-top:  12px;
+                padding-bottom: 12px;
+                padding-left: 24px;
+                padding-right: 24px;
+                font-size: 18px;
+                Border: None;
+                color: white; ">
+            </div>
+        </div>
+
+
+        </form>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text= "${titulo}">Document</title>
+
+
+    <style>
+
+       #table_product{
+           color: darkblue;
+       }  
+       #by_Munoz{
+           color: darkgoldenrod;
+       }
+
+       #nav-link{
+         text-decoration: none;
+         color: white;
+       }
+
+       #nav-link:hover{
+         text-decoration: underline;
+         color: red;
+       }
+       .main_heading{
+        text-align: center;
+        color: darkgoldenrod;
+        /* background: rgb(0,0,0); */
+background: linear-gradient(130deg, dimgray,  rgba(1,1,1,1) 93%, dimgray 65%, rgba(1,1,1,1) 93%);
+       }
+
+       #navigation{
+           list-style-type: none;
+       }
+
+    </style>
+
+
+</head>
+<body style="background-color: dimgray;">
+
+    <div th:if="${user}">
+
+    <nav id="navigation" class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+          <!-- Toggle button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-mdb-toggle="collapse"
+            data-mdb-target="#navbarRightAlignExample"
+            aria-controls="navbarRightAlignExample"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+      
+          <!-- Collapsible wrapper -->
+          <div class="collapse navbar-collapse" id="navbarRightAlignExample">
+            <!-- Left links -->
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="http://127.0.0.1:7000/Principal/ListadoProductos">Brayan's Shopping Cart</a>
+              </li>
+            
+             
+            </ul>
+            <!-- Left links -->
+          </div>
+          <li class="nav-item">
+            <a id="nav-link" class="nav-link" href="http://127.0.0.1:7000/Principal/Admin/CrearProductos">Visualizar Productos</a>
+          </li>
+
+          <li class="nav-item">
+            <a id="nav-link"  class="nav-link" href="http://127.0.0.1:7000/Principal/CrearProductos">Crear Productos</a>
+          </li>
+
+          <li class="nav-item">
+            <a id="nav-link" class="nav-link" href="http://127.0.0.1:7000/Principal/CrearProductos">Actualizar Productos</a>
+          </li>
+
+          <li class="nav-item">
+            <a id="nav-link" class="nav-link" href="http://127.0.0.1:7000/Principal/Ventas">Ventas</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#"></a>
+          </li>
+          <!-- Collapsible wrapper -->
+        </div>
+        <!-- Container wrapper -->
+      </nav>
+
+
+      <br>
+      <h2 class="main_heading"> <b>
+        Listado de Productos</b>
+        <small class="text-muted"> <b style="color: black;">Brayan's Shopping Cart</b></small>
+      </h2>
+      <br>
+
+     
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                       
+                        <th colspan="2" class="text-center">Precio</th>
+                        <!-- <th class="text-center">Total</th> -->
+                        <th colspan="2" class="text-center"> Acción </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="producto : ${auxProductos}">
+                        <td class="col-sm-6 col-md-4">
+                        <div class="media">
+                            <a class="thumbnail pull-left" href="#"> <img class="media-object" src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/72/product-icon.png" style="width: 72px; height: 72px;"> </a>
+                            <div class="media-body">
+                                <h4 class="media-heading"><a id="table_product" href="#"th:text="${producto.name_Product}">Product name</a></h4>
+                                <h5 class="media-heading">by: <a id="by_Munoz" href="#">Muñoz V.</a></h5>
+                                <span>Status: </span><span class="text-success"><strong>Disponible</strong></span>
+                            </div>
+                        </div></td>
+                    
+                        <td th:text="${producto.price_Product}" class="col-sm-1 col-md-1 text-right"><strong></strong></td>
+                        <td class="col-sm-1 col-md-1 text-center"><strong></strong></td>
+                        <td class="col-sm-2 col-md-2 text-right">
+                            <div class="form-group"> <button  name="agregar" type="submit" class="btn btn-info" th:form="'edit_form'+${producto.id_Product}">
+                                <span class="glyphicon glyphicon-ok"></span> Editar
+                            </button> 
+
+                            <button name="eliminar" type="submit" class="btn btn-danger" th:form="'delete_form'+${producto.id_Product}">
+                                <span class="glyphicon glyphicon-remove"></span> Eliminar
+                            </button></div></td>
+                            
+                            <form th:id="'edit_form'+${producto.getId_Product()}" th:action="'/Principal/CrearProductos/'+${producto.getId_Product()}";method="get"></form>
+
+                            <form th:id="'delete_form'+${producto.getId_Product()}" th:action="'/Principal/EliminarProductos/'+${producto.getId_Product()}";method="get"></form>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+</body>
+
+</div> 
+
+<div style="background-color: dimgray;"  th:unless="${user}">
+
+  <h2 style="text-align: center; color: black;" class="h2">
+    NO TIENE ACCESO A ESTE RECURSO, DEBE SER UN ADMINISTRADOR. 
+    SI ES ADMINISTRADOR  
+    <small class="text-muted"><a href="http://localhost:7000/Practica_2/usuarios/login">INICIE SESIÓN</a></small>
+  </h2>
+
+</div>
+
+</html>
