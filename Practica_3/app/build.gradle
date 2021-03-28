@@ -9,6 +9,8 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 
 repositories {
@@ -17,6 +19,12 @@ repositories {
     mavenCentral()
 }
 
+mainClassName='PracticasISC464_Practica2.App'
+
+application {
+    // Define the main class for the application.
+    mainClass = 'PracticasISC464_Practica2.App'
+}
 dependencies {
     // Use JUnit test framework.
     testImplementation 'junit:junit:4.13'
@@ -29,12 +37,21 @@ dependencies {
     implementation "org.slf4j:slf4j-simple:1.7.28"
     implementation "io.javalin:javalin-openapi:3.9.1"
     implementation "org.freemarker:freemarker:2.3.30"
-    implementation 'com.h2database:h2:1.4.200'
+    implementation  'com.h2database:h2:1.4.200'
+    implementation  'org.postgresql:postgresql:42.2.1'
     implementation 'org.jasypt:jasypt:1.9.3'
 
 }
 
-application {
-    // Define the main class for the application.
-    mainClass = 'PracticasISC464_Practica2.App'
+shadowJar{
+    baseName = 'app'
+    classifier = ''
+    archiveVersion = ''
 }
+
+
+task stage {
+    dependsOn shadowJar
+}
+
+
